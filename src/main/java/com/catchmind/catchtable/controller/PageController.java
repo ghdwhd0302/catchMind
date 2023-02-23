@@ -69,7 +69,7 @@ public class PageController {
             model.addAttribute("errorMessage",e.getMessage());
             return "join";
         }
-        return "redirect:/";
+        return "redirect:";
     }
 
     @PostMapping("/idCheck")
@@ -86,7 +86,7 @@ public class PageController {
     // 입점문의 페이지
     @GetMapping("pending")
     public ModelAndView inquiry (){
-        return new ModelAndView("/inquiry");
+        return new ModelAndView("inquiry");
     }
 
     // 입점문의 등록
@@ -94,12 +94,12 @@ public class PageController {
     public String inquiry (PendingDto pendingDto){
         System.out.println(pendingDto);
         pendingService.createResAdmin(pendingDto);
-        return "redirect:/";
+        return "redirect:";
     }
 
     @GetMapping("/findPassword")
     public ModelAndView findPw () {
-        return new ModelAndView("/findPw");
+        return new ModelAndView("findPw");
     }
     @PostMapping("/findPassword")
     @ResponseBody
@@ -111,7 +111,7 @@ public class PageController {
     @GetMapping("/resetPassword/{prHp}")
     public ModelAndView resetPw (@PathVariable String prHp, Model model){
         model.addAttribute("prHp",prHp);
-        return new ModelAndView("/resetPassword");
+        return new ModelAndView("resetPassword");
     }
     @PostMapping("/resetPassword")
     public String resetPassword (@RequestParam("prHp")String prHp,
