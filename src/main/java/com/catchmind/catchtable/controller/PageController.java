@@ -44,7 +44,7 @@ public class PageController {
 
     @GetMapping("/login")
     public String login() {
-        return "/login";
+        return "login";
     }
 
     @GetMapping("/login/error")
