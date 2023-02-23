@@ -43,8 +43,8 @@ public class PageController {
     }
 
     @GetMapping("/login")
-    public ModelAndView login() {
-        return new ModelAndView("/login");
+    public String login() {
+        return "/login";
     }
 
     @GetMapping("/login/error")
