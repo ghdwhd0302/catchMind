@@ -37,7 +37,7 @@ public class ReservationController {
     public String resMain(@PathVariable String resaBisName, Model model, @AuthenticationPrincipal CatchPrincipal catchPrincipal) {
         if (catchPrincipal == null) {
             model.addAttribute("prIdx",0);
-            return "redirect:login";
+            return "redirect:/login";
         } else {
             model.addAttribute("prIdx", catchPrincipal.prIdx());
             model.addAttribute("resaBisName", resaBisName);
@@ -133,19 +133,19 @@ public class ReservationController {
         //	orderNo, payMathod, 주문명.
         // - 카카오 페이로 넘겨받은 결재정보값을 저장.
 
-        return "redirect:mydining/planned";
+        return "redirect:/mydining/planned";
     }
 
     // 결제 취소시 실행 url
     @GetMapping("/pay/cancel")
     public String payCancel() {
-        return "redirect:reservation/payment";
+        return "redirect:/reservation/payment";
     }
 
     // 결제 실패시 실행 url
     @GetMapping("/pay/fail")
     public String payFail() {
-        return "redirect:reservation/payment";
+        return "redirect:/reservation/payment";
     }
 }
 

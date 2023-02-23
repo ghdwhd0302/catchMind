@@ -98,9 +98,9 @@ public class MypageController {
     public String collectionJoin(String prHp, String prUserpw) {
         boolean isTrue = profileLogicService.login(prHp, prUserpw);
         if (isTrue) {
-            return "redirect:mypage/modify";
+            return "redirect:/mypage/modify";
         } else {
-            return "redirect:mypage";
+            return "redirect:/mypage";
         }
     }
 
@@ -128,7 +128,7 @@ public class MypageController {
     public String updateProfile(@AuthenticationPrincipal CatchPrincipal catchPrincipal, ProfileRequest request) {
         Long prIdx = catchPrincipal.prIdx();
         profileLogicService.updateProfile(prIdx, request.toDto());
-        return "redirect:mypage";
+        return "redirect:/mypage";
     }
 
     // sns추가 페이지
@@ -201,7 +201,7 @@ public class MypageController {
             }
         }
 
-        return "redirect:mypage";
+        return "redirect:/mypage";
     }
 
     // 내 리뷰 보기
@@ -209,7 +209,7 @@ public class MypageController {
     public String myReview(Model model, @AuthenticationPrincipal CatchPrincipal catchPrincipal,
                                  @PageableDefault(size = 10, sort = "revIdx", direction = Sort.Direction.DESC) Pageable pageable, ModelMap map) {
         if(catchPrincipal == null) {
-            return "redirect:login";
+            return "redirect:/login";
         }
         Long prIdx = catchPrincipal.prIdx();
         TimeLineResponse header = header(prIdx);
@@ -417,7 +417,7 @@ public class MypageController {
         System.out.println("💕" + colIdx);
         profileLogicService.updateMyCollectionSave(colIdx, bisNames);
         profileLogicService.updateBistroSave(colIdx, bisNames, prIdx);
-        return "redirect:mypage/collection/detail/" + colIdx;
+        return "redirect:/mypage/collection/detail/" + colIdx;
     }
 
     //  저장된 식당 리스트 보기

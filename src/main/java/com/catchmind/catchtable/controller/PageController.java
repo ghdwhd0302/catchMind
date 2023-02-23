@@ -42,7 +42,7 @@ public class PageController {
         return "index";
     }
 
-    @GetMapping("/login")
+    @GetMapping("login")
     public String login() {
         return "login";
     }
@@ -69,7 +69,7 @@ public class PageController {
             model.addAttribute("errorMessage",e.getMessage());
             return "join";
         }
-        return "redirect:";
+        return "redirect:/";
     }
 
     @PostMapping("/idCheck")
@@ -94,7 +94,7 @@ public class PageController {
     public String inquiry (PendingDto pendingDto){
         System.out.println(pendingDto);
         pendingService.createResAdmin(pendingDto);
-        return "redirect:";
+        return "redirect:/";
     }
 
     @GetMapping("/findPassword")
